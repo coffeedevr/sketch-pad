@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,55 @@
     <title>Sketch Pad</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda+One&display=swap" rel="stylesheet">
 
 </head>
 
-<body>
-    <div id="gridcontainer">
+<body class="body">
+    <div class="header">
+        <p>Sketch Pad</p>
+    </div>
+    <div class="main">
+
+        <div class="rightbar">
+            <div class="controls">
+                <p id="colordisplay">Color Picker: #000000</p>
+                <div class="clrcontainer">
+                    <input type="color" id="colorcontrol" value="#000000">
+                </div>
+                <div class="paintcontrols">
+                    <p>Paint Controls:</p>
+                    <button class="buttons" id="paintcontrol"></button>
+                    <button class="buttons" id="erasercontrol"></button>
+                </div>
+                <div class="utilcontainer">
+                    <p>Utilities:</p>
+                    <button class="buttons" id="bordercontrol"></button>
+                    <button class="buttons" id="clearcanvas"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="maingrid">
+            <div id="gridcontainer"></div>
+            <p id="gridsizedisplay">Canvas Size: 12x12</p>
+            <div class="slidecontainer">
+                <input type="range" id="gridslider" min="0" max="3" value="0">
+            </div>
+        </div>
+
+        <div class="leftbar">
+            <h2>Instructions</h2>
+        </div>
 
     </div>
-    <button>click me</button>
+
+    <div class="footer">
+        <p class="footertext"></p>
+    </div>
     <script src="script.js"></script>
 </body>
+
 </html>
