@@ -41,13 +41,36 @@ p {
 
 #colordisplay,
 .paintcontrols p,
-.utilcontainer p
+.utilcontainer p,
+.controls p
 {
     padding: 0px;
     margin: 0px;
     float: top;
     text-align: center;
 }
+
+.buttonlabel {
+    font-size: 12px;
+}
+
+.paintcontrols {
+    display: flex;
+    flex-direction: row;
+}
+
+.buttoncontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.utilcontainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 
 .buttons {
     height: 51px;
@@ -56,6 +79,11 @@ p {
     margin: 5px;
     border: none;
     padding: 0px;
+    cursor: pointer;
+}
+
+#gridslider {
+    width: 200px
 }
 
 #paintcontrol {
@@ -107,8 +135,8 @@ p {
 
 #gridcontainer {
     border: 1px solid;
-    height: 480px;
-    width: 480px;
+    height: 522px;
+    width: 522px;
     display: flex;
     flex-wrap: wrap;
     padding: 0px;
@@ -128,15 +156,30 @@ p {
 
 .leftbar {
     display: flex;
-    text-align: center;
+    flex-direction: column;
     width: 160px;
+    justify-content: space-between;
+}
+
+.leftbar p {
+    font-size: 16px;
+    margin: 15px 0 0px 0;
 }
 
 .leftbar h2 {
     padding: 0px;
-    margin: 0px;
+    margin-bottom: 0px;
 }
 
 .footer {
-    text-align: center;
+    margin-top: 10px;
+    font-family: 'Tilt Neon', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tipscontainer img {
+    height: 20px;
+    width: 25px;
 }

@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merienda+One&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Merienda+One&family=Tilt+Neon&display=swap" rel="stylesheet">
 </head>
 
 <body class="body">
@@ -26,15 +25,27 @@
                 <div class="clrcontainer">
                     <input type="color" id="colorcontrol" value="#000000">
                 </div>
+                <p>Paint Controls:</p>
                 <div class="paintcontrols">
-                    <p>Paint Controls:</p>
-                    <button class="buttons" id="paintcontrol"></button>
-                    <button class="buttons" id="erasercontrol"></button>
+                    <div class="buttoncontainer">
+                        <button class="buttons" id="paintcontrol"></button>
+                        <p class="buttonlabel">Brush</p>
+                    </div>
+                    <div class="buttoncontainer">
+                        <button class="buttons" id="erasercontrol"></button>
+                        <p class="buttonlabel">Eraser</p>
+                    </div>
                 </div>
+                <p>Utilities:</p>
                 <div class="utilcontainer">
-                    <p>Utilities:</p>
-                    <button class="buttons" id="bordercontrol"></button>
-                    <button class="buttons" id="clearcanvas"></button>
+                    <div class="buttoncontainer">
+                        <button class="buttons" id="bordercontrol"></button>
+                        <p class="buttonlabel">Grid Display</p>
+                    </div>
+                    <div class="buttoncontainer">
+                        <button class="buttons" id="clearcanvas"></button>
+                        <p class="buttonlabel">Erase</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,18 +54,30 @@
             <div id="gridcontainer"></div>
             <p id="gridsizedisplay">Canvas Size: 12x12</p>
             <div class="slidecontainer">
-                <input type="range" id="gridslider" min="0" max="3" value="0">
+                <input type="range" id="gridslider" min="0" max="13" value="0">
             </div>
         </div>
 
         <div class="leftbar">
-            <h2>Instructions</h2>
+            <div class="instructioncontainer">
+                <h2>Instructions</h2>
+                <p>To start drawing, use the Brush tool.</p>
+                <p>If you wish to erase a color, use the Eraser tool.</p>
+                <p>You can toggle canvas borders by clicking the Grid Display Button.</p>
+                <p>You can reset the canvas by clicking the Erase button.</p>
+            </div>
+            <div class="tipscontainer">
+                <h2>Tips!</h2>
+                <p>You can hold the <img src="img/icons8-ctrl-50.png"> button while clicking on a grid to add <u>tint</u>!</p>
+                <p>You can hold the <img src="img/icons8-shift-mac-50.png"> button while clicking on a grid to add <u>shading</u>!</p>
+            </div>
         </div>
 
     </div>
 
     <div class="footer">
-        <p class="footertext"></p>
+        <p id="footertext"> coffeedevr |</p>
+        <a href="https://github.com/coffeedevr/sketch-pad" target=”_blank”><img src="img/githublogo.png" height="50px"></a>
     </div>
     <script src="script.js"></script>
 </body>

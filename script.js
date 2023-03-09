@@ -8,17 +8,23 @@ const btnErase = document.querySelector('#erasercontrol');
 const gridSlider = document.querySelector('#gridslider');
 const gridDisplay = document.querySelector('#gridsizedisplay');
 const colorDisplay = document.querySelector('#colordisplay');
+const footerText = document.querySelector('#footertext');
 
 //variables
 const defaultGridBoxes = 12;
-const gridValues = [12, 24, 32, 64];
+const gridValues = [12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64];
+
+const d = new Date();
+let year = d.getFullYear();
+
 let paintmode = true;
+let holdmode = 0;
 
 function loadGrid(grid) {
-    let gridSize = (480 / grid) - 2;  //determines div size depending on grid and container size; -2 is border;
+    let gridSize = (522 / grid) - 2;  //determines div size depending on grid and container size; -2 is border;
     let boxNum = grid * grid; //amount of divs to create;
 
-    for (let i = 0; i < boxNum; i++) {
+    for (let i = 0; i < boxNum; i++) { //create grids
         let box = document.createElement('div');
         box.setAttribute('class', 'gridbox');
         box.setAttribute('id', "box" + i);
@@ -28,9 +34,16 @@ function loadGrid(grid) {
 
     const gridBoxes = document.querySelectorAll('.gridbox');
 
-    gridBoxes.forEach((boxes) => {
+    gridBoxes.forEach((boxes) => { //add listeners to grids
+        boxes.addEventListener('mousedown', () => {
+            holdmode = 1;
+        });
+        boxes.addEventListener('mouseup', () => {
+            holdmode = 0;
+        });
         boxes.addEventListener('mousedown', changeColor);
         boxes.addEventListener('mouseup', changeColor);
+        boxes.addEventListener('mouseover', changeColor);
     });
 
     function removeGrid() {
@@ -46,7 +59,7 @@ function loadGrid(grid) {
         }
     }
 
-    function changeGrid() {
+    function changeGrid() { //change grid size
         let boxes = document.querySelectorAll('.gridbox');
         boxes.forEach((boxes) => {
             boxes.remove();
@@ -56,6 +69,8 @@ function loadGrid(grid) {
 
         gridSlider.removeEventListener('change', changeGrid);
         colorpicker.removeEventListener('click', changeColor);
+        colorpicker.removeEventListener('change', updateColor);
+        btnBorder.removeEventListener('click', removeGrid);
         btnBorder.removeEventListener('click', removeGrid);
         btnReset.removeEventListener('click', resetCanvas);
 
@@ -86,6 +101,8 @@ function loadGrid(grid) {
 
 }
 
+footerText.textContent = "© " + year + footerText.textContent;
+
 window.addEventListener('DOMContentLoaded', () => {
     loadGrid(defaultGridBoxes); //load default number of boxes
 });
@@ -95,10 +112,10 @@ function changeColor(event) {
     const id = "#" + event.target.id;
     const targetBox = document.querySelector(id).style;
     const targetColor = document.getElementById(event.target.id).style.backgroundColor;
-
+    console.log(event.type);
     if (paintmode == true) {
         if (event.type == 'mousedown') {
-            if (event.altKey && !event.ctrlKey) {
+            if (event.ctrlKey) { // add tint
                 const toRGBArray = rgbStr => rgbStr.match(/\d+/g).map(Number);
                 let newcolor = toRGBArray(targetColor);
 
@@ -109,7 +126,7 @@ function changeColor(event) {
                 targetBox.backgroundColor = "rgb("+newR+", "+newG+", "+newB+")";
 
 
-            } else if (event.shiftKey && !event.ctrlKey) {
+            } else if (event.shiftKey) { //add shading
                 const toRGBArray = rgbStr => rgbStr.match(/\d+/g).map(Number);
                 let newcolor = toRGBArray(targetColor);
 
@@ -122,9 +139,13 @@ function changeColor(event) {
             else {
                 targetBox.backgroundColor = document.getElementById("colorcontrol").value;
             }
-        } 
+        } else if (event.type == 'mouseover' && holdmode == 1){
+            targetBox.backgroundColor = document.getElementById("colorcontrol").value;
+        } else {
+
+        }
     } else {
-        if (event.type == 'mousedown' || event.ctrlKey) {
+        if (event.type == 'mousedown') {
             targetBox.backgroundColor = 'rgb(255, 255, 255)';
         }
     }
