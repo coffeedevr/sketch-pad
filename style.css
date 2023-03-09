@@ -17,18 +17,17 @@
 
 p {
     font-size: 18px;
-    color:rgb(150, 107, 107)
+    color: rgb(143, 120, 120)
 }
 
 .header {
-    margin: 10px;
     padding-top: 2px;
     text-align: center;
 }
 
 .header p {
     font-size: 50px;
-    margin: 0px;
+    margin: 40px 0 0 0;
 }
 
 .rightbar {
@@ -42,8 +41,7 @@ p {
 #colordisplay,
 .paintcontrols p,
 .utilcontainer p,
-.controls p
-{
+.controls p {
     padding: 0px;
     margin: 0px;
     float: top;
@@ -144,7 +142,7 @@ p {
 
 .gridbox {
     flex-grow: 1;
-    flex-shrink: 1;  
+    flex-shrink: 1;
     border: 1px solid rgb(195, 195, 195);
     margin: 0px;
     padding: 0px;
