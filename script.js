@@ -112,7 +112,6 @@ function changeColor(event) {
     const id = "#" + event.target.id;
     const targetBox = document.querySelector(id).style;
     const targetColor = document.getElementById(event.target.id).style.backgroundColor;
-    console.log(event.type);
     if (paintmode == true) {
         if (event.type == 'mousedown') {
             if (event.ctrlKey) { // add tint
